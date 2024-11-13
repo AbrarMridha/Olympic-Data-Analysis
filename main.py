@@ -13,7 +13,6 @@ country_medal_counts = get_medal_counts_by_country(data)
 # Plot the top countries by medal count
 plot_top_countries_medals(country_medal_counts)
 
-# Additional SQL analysis (optional)
 conn = sqlite3.connect(':memory:')  # Use an in-memory database
 data.to_sql('athlete_data', conn, index=False, if_exists='replace')
 
