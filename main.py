@@ -26,4 +26,14 @@ ORDER BY Total_Medals DESC
 LIMIT 10;
 '''
 top_countries = pd.read_sql(top_countries_query, conn)
-print(top_countries)
+print("Top 10 Countries By Total Medals: \n",top_countries)
+
+medal_distribution_query = '''
+SELECT NOC AS Country, Sport, COUNT(Medal) AS Medal_Count
+FROM athlete_data
+WHERE Medal IS NOT NULL
+GROUP BY NOC, Sport
+ORDER BY Medal_Count DESC;
+'''
+medal_distribution = pd.read_sql(medal_distribution_query, conn)
+print("Countries and Sports that brags the highest medals: \n", medal_distribution)
